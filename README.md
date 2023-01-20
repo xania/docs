@@ -2,13 +2,19 @@
 
 Xania Documentations
 
+![Screenshot](./src/assets/Screenshot.png)
+
 ## Usage
 
 During development
 
 ```bash
+npm install
 npm start
+
 ```
+
+HIT F5 to run chrome in debug mode
 
 ---
 
