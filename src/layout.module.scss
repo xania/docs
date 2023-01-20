@@ -1,0 +1,118 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app {
+  display: flex;
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+
+.app__aside {
+  background-color: #2e3336;
+  box-sizing: border-box;
+  min-height: 100%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+
+  h1 {
+    font-size: 20px;
+    color: rgb(235, 134, 168);
+  }
+
+  .logo {
+    width: 150px;
+    height: 100px;
+    background-image: url(./assets/logo.webp);
+    background-size: cover;
+    margin: 20px auto;
+  }
+
+  footer {
+    border-top: 1px dashed rgba(168, 168, 168, 0.562);
+    margin: 30px 0;
+    padding: 20px;
+    text-align: left;
+    background-size: cover;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      &.github {
+        background-image: url(./assets/logo.webp);
+      }
+    }
+  }
+}
+
+.app__main {
+  max-height: 100%;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  .section {
+    display: flex;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+
+    &:first-child {
+      .section__content {
+        border: none;
+      }
+    }
+
+    &__content {
+      border-top: 1px solid rgba(0, 0, 0, 0.144);
+      width: 700px;
+      padding: 0 24px;
+      box-sizing: border-box;
+
+      h1 {
+        font-size: 25px;
+        margin: 16px 0;
+        color: #720c69;
+      }
+
+      p {
+        width: 100%;
+        overflow: hidden;
+        clear: both;
+      }
+    }
+    &__code {
+      flex: 1;
+      background-color: #2e3336;
+      color: white;
+    }
+
+    &--fill {
+      color: red;
+      flex: 1;
+    }
+  }
+}

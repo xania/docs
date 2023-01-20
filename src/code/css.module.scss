@@ -1,0 +1,66 @@
+﻿:root {
+  --highlight-background: rgba(255, 255, 255, 0);
+  --highlight-width: 0;
+}
+
+.snap {
+  border: 1px solid red;
+}
+
+.preformatted {
+  background-color: rgba(0, 0, 0, 0.747);
+  padding: 24px 0;
+  position: relative;
+  font-size: 14px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+
+  font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New monospace;
+
+  code {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  .line {
+    width: 100%;
+    display: inline-block;
+    line-height: 22px;
+    border-left: 6px solid black;
+    box-sizing: border-box;
+
+    &--highlited {
+      border-left-color: rgb(204, 109, 184);
+      background-color: rgba(8, 46, 102, 0.597);
+    }
+  }
+
+  .line-number {
+    color: rgba(255, 255, 255, 0.493);
+    width: 20px;
+    display: inline-block;
+    text-align: right;
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.211);
+    margin-right: 20px;
+  }
+
+  :global {
+    .keyword {
+      color: rgb(255, 67, 67);
+    }
+    .function {
+      color: rgb(187, 172, 255);
+    }
+    .number {
+      color: rgb(77, 253, 253);
+    }
+    .literal-property {
+      color: white;
+    }
+    .parameter {
+      color: rgb(147, 147, 255);
+    }
+  }
+}
