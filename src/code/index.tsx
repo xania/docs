@@ -27,6 +27,7 @@ export function Code(props: MarkdownProps) {
 
     const lines = html
       .split("\n")
+      .filter((e) => e /** remove empty lines */)
       .map(
         (x, i) =>
           `<span class="${classes["line"]} ${
