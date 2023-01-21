@@ -8,11 +8,9 @@
 }
 
 .preformatted {
-  background-color: rgba(0, 0, 0, 0.747);
-  padding: 24px 0;
+  background-color: rgba(0, 0, 0, 0.705);
   position: relative;
   font-size: 14px;
-  margin-bottom: 50px;
   border-radius: 10px;
 
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New monospace;
@@ -21,13 +19,14 @@
     width: 100%;
     display: block;
     box-sizing: border-box;
+    overflow: auto;
   }
 
   .line {
     width: 100%;
     display: inline-block;
     line-height: 22px;
-    border-left: 6px solid black;
+    border-left: 6px solid rgba(255, 255, 255, 0);
     box-sizing: border-box;
 
     &--highlited {

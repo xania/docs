@@ -25,6 +25,7 @@ code {
   max-height: 100%;
   overflow: hidden;
   height: 100%;
+  container-type: inline-size;
 }
 
 .app__aside {
@@ -67,52 +68,85 @@ code {
 }
 
 .app__main {
+  container-type: inline-size;
   max-height: 100%;
   flex: 1;
   overflow: auto;
   display: flex;
   flex-direction: column;
+}
 
-  .section {
-    display: flex;
+.section {
+  display: flex;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  &:first-child {
+    .section__content {
+      border: none;
+    }
+  }
+
+  &__content {
+    border-top: 1px solid rgba(0, 0, 0, 0.144);
+    padding: 0 24px;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-
-    &:first-child {
-      .section__content {
-        border: none;
-      }
+    flex: 1;
+    h1 {
+      font-size: 25px;
+      margin: 16px 0;
+      color: #720c69;
     }
 
+    p {
+      width: 100%;
+      overflow: hidden;
+      clear: both;
+    }
+  }
+  &__code {
+    flex: 1;
+    color: white;
+  }
+
+  &--fill {
+    color: red;
+    flex: 1;
+  }
+}
+
+$mobile: 800px;
+
+@container (max-width: 800px) {
+  .app__aside {
+    display: none;
+  }
+  .section {
+    flex-direction: column;
     &__content {
-      border-top: 1px solid rgba(0, 0, 0, 0.144);
-      width: 700px;
-      padding: 0 24px;
-      box-sizing: border-box;
-
-      h1 {
-        font-size: 25px;
-        margin: 16px 0;
-        color: #720c69;
-      }
-
-      p {
-        width: 100%;
-        overflow: hidden;
-        clear: both;
-      }
     }
+
     &__code {
-      flex: 1;
-      background-color: #2e3336;
-      color: white;
+      pre {
+        padding: 20px;
+        margin: 20px;
+      }
+    }
+  }
+}
+
+@container (min-width: 800px) {
+  .section {
+    &__content {
     }
 
-    &--fill {
-      color: red;
-      flex: 1;
+    &__code {
+      background-color: #2e3336;
+      pre {
+        padding: 24px 0;
+        margin-bottom: 50px;
+      }
     }
   }
 }
