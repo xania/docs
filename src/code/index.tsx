@@ -1,4 +1,4 @@
-﻿import { Anchor, jsxFactory } from "@xania/view";
+﻿import { jsxFactory } from "@xania/view";
 import prettier from "prettier";
 import parserTypescript from "prettier/parser-typescript";
 
@@ -11,13 +11,22 @@ const jsx = jsxFactory({ classes });
 
 interface MarkdownProps {
   children: string;
-  lines: number[];
+  lines?: number[];
 }
 
-export function Code(props: MarkdownProps) {
+export function Bash(props: { children: JSX.Children }) {
+  return (
+    <div class="bash">
+      <span class="bash__content">{props.children}</span>
+    </div>
+  );
+}
+
+export function Javascript(props: MarkdownProps) {
   try {
     const formatted = prettier.format(props.children[0], {
       parser: "typescript",
+      newlineAfterImport: true,
       plugins: [parserTypescript],
     });
 
@@ -31,7 +40,7 @@ export function Code(props: MarkdownProps) {
       .map(
         (x, i) =>
           `<span class="${classes["line"]} ${
-            props.lines.includes(i + 1) ? classes["line--highlited"] : null
+            props.lines?.includes(i + 1) ? classes["line--highlited"] : null
           }"><span class="${classes["line-number"]}">${
             i + 1
           }</span><span class="${classes["line__content"]}">${x}</span></span>`

@@ -25,6 +25,7 @@ code {
   max-height: 100%;
   overflow: hidden;
   height: 100%;
+  background-color: rgb(235, 235, 235);
   container-type: inline-size;
 }
 
@@ -90,19 +91,32 @@ code {
 
   &__content {
     border-top: 1px solid rgba(0, 0, 0, 0.144);
-    padding: 0 24px;
+    padding: 0 0;
     box-sizing: border-box;
     flex: 1;
+    h1,
+    h2,
+    h3,
+    p {
+      padding: 10px 24px;
+    }
     h1 {
       font-size: 25px;
       margin: 16px 0;
-      color: #720c69;
+      color: #7e2276;
+      background-color: white;
+    }
+    h2 {
+      font-size: 20px;
+      margin: 16px 0;
+      color: #520c72;
     }
 
     p {
       width: 100%;
       overflow: hidden;
       clear: both;
+      padding: 0 24px;
     }
   }
   &__code {

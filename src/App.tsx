@@ -1,8 +1,10 @@
 import { JsxElement, jsxFactory, TemplateNodeType } from "@xania/view";
 import classes from "./layout.module.scss";
-import { Code } from "./code";
+import { Bash, Javascript } from "./code";
 import { Outline } from "./outline";
 import { Search } from "./search";
+import benchmarkImg from "./assets/benchmark-results.png";
+import diamondImg from "./assets/diamond.png";
 
 const jsx = jsxFactory({ classes });
 
@@ -38,53 +40,255 @@ function Main() {
       <div class="section">
         <div class="section__content">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum
+            To get you started you only need to install the @xania/state package
           </p>
         </div>
         <div class="section__code">
-          <Code lines={[2, 6, 7]}>
-            {`
-                function start() {
-                  return <div>Hello world { 1 + 2 } <>adfasdf</><><>adfa asdf asdf asdf asdf asdfas dfasdf asdsdf</></></div>;
-                }
-              `}
-          </Code>
+          <Bash>npm install @xania/view</Bash>
         </div>
       </div>
       <div class="section">
         <div class="section__content">
           <h1 id={"introduction"}>Introduction</h1>
-          <p>hello</p>
+          <p>
+            @xania/state is intended to be complementary to RxJS and is
+            especially an alternative to BehaviorSubject and it's main goal to
+            provide reactivity for the View library. RxJS is on the other hand
+            better suited for handling events coming from view, e.g. for
+            debounce, async, etc...
+          </p>
+          <p>
+            Reactivity in @xania/state is in first place about setting up the
+            logic of how the data flows, independent from whether or not the
+            actual data is available. Secondly, when data is available or is
+            changed then the states should be synchronised according to this
+            logic.
+          </p>
+          <p>
+            We also allow observers to subscribe to the individual state values.
+            These observer are immediately notified on subscription (when state
+            current value is not undefined) and on changes of the state values.
+            So when observers are being called we can be sure the state is
+            changed.
+          </p>
         </div>
         <div class="section__code">
-          <Code lines={[2, 3, 4]}>
+          <Javascript lines={[2, 3, 5]}>
             {`
-            class A {
-              constructor() {
-                console.log("Hello World!");
-              }
-            }            
+            // hello
+import { State } from "@xania/state";
+
+const count = new State(1);
+const subscription = count.subcribe({
+  next(value: number) {
+    console.log(value);
+  },
+});
+
+subscription.unsubscribe();        
             `}
-          </Code>
+          </Javascript>
         </div>
       </div>
-      {Array.from({ length: 10 }).map((_, i) => (
-        <div class="section">
-          <div class="section__content">
-            <h1 id={"header-" + i}>header {i.toString()}</h1>
-          </div>
-          <div class="section__code"></div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"core-features"}>Core features</h1>
+          <ul>
+            <li>monadic state (map, bind)</li>
+            <li>topological sorting</li>
+            <li>asynchronuous data (in progress)</li>
+            <li>scheduling (in progress)</li>
+            <li>batching (in progress)</li>
+          </ul>
         </div>
-      ))}
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"fine-grained-state"}>Fine-grained state</h1>
+          <h2>Benchmark results</h2>
+          <p>
+            <img src={benchmarkImg} />
+          </p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"state"}>State</h1>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>Create new state object</h2>
+        </div>
+        <div class="section__code">
+          <Javascript lines={[3]}>
+            {`
+            import { State } from "@xania/state";
 
+            function App() {
+              const count = new State<number>();
+            }`}
+          </Javascript>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"combine-latest"}>Combine latest</h2>
+        </div>
+        <div class="section__code">
+          <Javascript lines={[5]}>
+            {`
+            import { State, combineLatest } from "@xania/state";
+
+            function App() {
+              const x = new State<number>(1);
+              const y = new State<number>(2);
+              const sum = combineLatest([x, y]).map(([x, y]) => x + y)
+            }
+            `}
+          </Javascript>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"state-operators"}>State operators</h1>
+          <p>prop, map, bind</p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"property-oprator"}>Property operator</h2>
+          <p>prop, map, bind</p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>Map operator</h2>
+          <p>prop, map, bind</p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"create-state"}>State mutations</h1>
+          <p>
+            All types of state values allow for update. @xania/state guarantees
+            that when a state value is updated then the dependents are
+            synchronised in most efficient and performant manner. But it does
+            not guarantee that all these mutation on state s will be
+            synchronised with dependencies of s. In case s is derived from a
+            property of a parent state then synchronisation is obvious, but when
+            mapped by a function then after update of s we rely on events
+            handling by user to propagate the value back to it's
+            parent/dependencies. There are cases where this behavior is
+            desirable for example when data in s first need to be verified
+            manually send to backend and only after succesful save we propagate
+            the values to the dependencies.
+          </p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>Special case of undefined</h2>
+          <p>
+            A new State object when no value is provided then State as not
+            initialized in which case the observers will not be notified untill
+            non undefined value is provided. Also updates with undefined value
+            are not processed and the previous value is untouched. This also
+            applies for derived state, e.g. when a state value is mapped to
+            undefined.
+          </p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"create-state"}>Interop</h1>
+          <p></p>
+        </div>
+        <div class="section__code"></div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>from Observable</h2>
+          <p></p>
+        </div>
+        <div class="section__code">
+          <Javascript>
+            {`
+            import { from } from "@xania/state";
+            import { timer } from "rxjs";
+
+            const state = from(timer(0, 1000));
+            `}
+          </Javascript>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>from Promise</h2>
+          <p></p>
+        </div>
+        <div class="section__code">
+          <Javascript>
+            {`
+            import { from } from "@xania/state";
+
+            const state = from(Promise.resolve(1));
+            `}
+          </Javascript>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>from AsyncTterator</h2>
+          <p></p>
+        </div>
+        <div class="section__code">
+          <Javascript>
+            {`
+            import { from } from "@xania/state";
+
+            const state = from([1, 2, 3].values());
+            `}
+          </Javascript>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h2 id={"create-state"}>from Event</h2>
+          <p></p>
+        </div>
+        <div class="section__code">
+          <Javascript>
+            {`
+            import { from } from "@xania/state";
+
+            const state = from([1, 2, 3].values());
+            `}
+          </Javascript>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section__content">
+          <h1 id={"create-state"}>Diamond problem</h1>
+          <h2>
+            <a href="https://stackblitz.com/edit/vitejs-vite-cxno2b">
+              Live demo
+            </a>
+          </h2>
+          <p>
+            <img src={diamondImg} />
+          </p>
+        </div>
+        <div class="section__code"></div>
+      </div>
       <div class="section section--fill">
         <div class="section__content"></div>
         <div class="section__code"></div>

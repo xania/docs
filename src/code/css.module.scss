@@ -7,6 +7,20 @@
   border: 1px solid red;
 }
 
+.bash {
+  padding: 10px 26px;
+  background-color: rgb(13, 27, 43);
+  &__content {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    line-height: 30px;
+    border-left: 3px solid gray;
+    padding: 0 10px;
+  }
+}
+
 .preformatted {
   background-color: rgba(0, 0, 0, 0.705);
   position: relative;
@@ -47,6 +61,9 @@
   :global {
     .keyword {
       color: rgb(255, 67, 183);
+    }
+    .comment {
+      color: rgb(116, 211, 62);
     }
     .function {
       color: rgb(172, 255, 193);
