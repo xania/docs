@@ -107,6 +107,7 @@ code {
   }
   &__code {
     flex: 1;
+    overflow: hidden;
     color: white;
   }
 
@@ -128,6 +129,8 @@ $mobile: 800px;
     }
 
     &__code {
+      overflow: inherit;
+
       pre {
         padding: 10px 0;
         margin: 0 20px;

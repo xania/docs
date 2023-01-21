@@ -53,7 +53,7 @@ function Main() {
           <Code lines={[2, 6, 7]}>
             {`
                 function start() {
-                  return <div>Hello world { 1 + 2 } <>adfasdf</></div>;
+                  return <div>Hello world { 1 + 2 } <>adfasdf</><><>adfa asdf asdf asdf asdf asdfas dfasdf asdsdf</></></div>;
                 }
               `}
           </Code>

@@ -32,7 +32,9 @@ export function Code(props: MarkdownProps) {
         (x, i) =>
           `<span class="${classes["line"]} ${
             props.lines.includes(i + 1) ? classes["line--highlited"] : null
-          }"><span class="${classes["line-number"]}">${i + 1}</span>${x}</span>`
+          }"><span class="${classes["line-number"]}">${
+            i + 1
+          }</span><span class="${classes["line__content"]}">${x}</span></span>`
       )
       .join("\n");
 
