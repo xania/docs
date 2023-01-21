@@ -45,22 +45,32 @@
     border-right: 1px solid rgba(255, 255, 255, 0.211);
     margin-right: 20px;
   }
-
   :global {
     .keyword {
-      color: rgb(255, 67, 67);
+      color: rgb(255, 67, 183);
     }
     .function {
-      color: rgb(187, 172, 255);
+      color: rgb(172, 255, 193);
     }
     .number {
-      color: rgb(77, 253, 253);
+      color: rgb(253, 77, 77);
     }
     .literal-property {
-      color: white;
+      color: rgb(255, 255, 255);
     }
     .parameter {
       color: rgb(147, 147, 255);
+    }
+
+    .operator {
+      color: rgba(158, 255, 255);
+    }
+    .punctuation {
+      color: rgba(255, 255, 255, 0.389);
+    }
+    .tag {
+      color: rgb(201, 234, 136);
+      font-weight: bold;
     }
   }
 }
