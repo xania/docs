@@ -1,0 +1,59 @@
+﻿.App {
+  text-align: center;
+  overflow: auto;
+}
+.Diamond {
+  width: 500px;
+  height: 450px;
+  margin: auto;
+
+  background-image: url(./diamond.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  color: black;
+  font-weight: bold;
+
+  label {
+    color: gray;
+    clear: both;
+    display: block;
+  }
+
+  .Count {
+    position: absolute;
+    left: 280px;
+    top: 58px;
+    width: 30px;
+    text-align: center;
+  }
+  .Double {
+    position: absolute;
+    left: 30px;
+    top: 110px;
+    color: black;
+    width: 40px;
+    text-align: right;
+  }
+  .Triple {
+    position: absolute;
+    left: 455px;
+    top: 243px;
+    width: 40px;
+    text-align: left;
+  }
+  .Quadruple {
+    position: absolute;
+    left: 15px;
+    top: 285px;
+    width: 40px;
+    text-align: right;
+  }
+  .Sum {
+    position: absolute;
+    left: 190px;
+    top: 360px;
+    width: 100px;
+    text-align: center;
+  }
+}

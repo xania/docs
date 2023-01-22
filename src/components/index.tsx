@@ -14,6 +14,15 @@ interface MarkdownProps {
   lines?: number[];
 }
 
+export function Img(props: { height: number; src: string }) {
+  return (
+    <div
+      class="image"
+      style={`height: ${props.height}px; background-image: url(${props.src})`}
+    ></div>
+  );
+}
+
 export function Bash(props: { children: JSX.Children }) {
   return (
     <div class="bash">

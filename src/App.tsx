@@ -1,10 +1,11 @@
 import { JsxElement, jsxFactory, TemplateNodeType } from "@xania/view";
 import classes from "./layout.module.scss";
-import { Bash, Javascript } from "./code";
+import { Bash, Img, Javascript } from "./components";
 import { Outline } from "./outline";
 import { Search } from "./search";
 import benchmarkImg from "./assets/benchmark-results.png";
 import diamondImg from "./assets/diamond.png";
+import { Diamond } from "./demos/diamond";
 
 const jsx = jsxFactory({ classes });
 
@@ -16,7 +17,9 @@ export default function App() {
         <div class="logo" />
         <h1>Super Docu</h1>
         <Search />
-        <Outline>{main}</Outline>
+        <Outline>
+          <Main />
+        </Outline>
         <footer>
           <a class="github" href="https://github.com/xania/slate">
             <span>Github</span>
@@ -108,7 +111,7 @@ subscription.unsubscribe();
           <h1 id={"fine-grained-state"}>Fine-grained state</h1>
           <h2>Benchmark results</h2>
           <p>
-            <img src={benchmarkImg} />
+            <Img height={200} src={benchmarkImg} />
           </p>
         </div>
         <div class="section__code"></div>
@@ -175,7 +178,7 @@ subscription.unsubscribe();
       </div>
       <div class="section">
         <div class="section__content">
-          <h1 id={"create-state"}>State mutations</h1>
+          <h1 id={"state-mutations"}>State mutations</h1>
           <p>
             All types of state values allow for update. @xania/state guarantees
             that when a state value is updated then the dependents are
@@ -195,7 +198,7 @@ subscription.unsubscribe();
       </div>
       <div class="section">
         <div class="section__content">
-          <h2 id={"create-state"}>Special case of undefined</h2>
+          <h2 id={"special-case-of-undefined"}>Special case of undefined</h2>
           <p>
             A new State object when no value is provided then State as not
             initialized in which case the observers will not be notified untill
@@ -209,7 +212,7 @@ subscription.unsubscribe();
       </div>
       <div class="section">
         <div class="section__content">
-          <h1 id={"create-state"}>Interop</h1>
+          <h1 id={"interop"}>Interop</h1>
           <p></p>
         </div>
         <div class="section__code"></div>
@@ -247,7 +250,7 @@ subscription.unsubscribe();
       </div>
       <div class="section">
         <div class="section__content">
-          <h2 id={"create-state"}>from AsyncTterator</h2>
+          <h2 id={"from-async-iterator"}>from AsyncTterator</h2>
           <p></p>
         </div>
         <div class="section__code">
@@ -262,7 +265,7 @@ subscription.unsubscribe();
       </div>
       <div class="section">
         <div class="section__content">
-          <h2 id={"create-state"}>from Event</h2>
+          <h2 id={"from-event"}>from Event</h2>
           <p></p>
         </div>
         <div class="section__code">
@@ -278,14 +281,12 @@ subscription.unsubscribe();
       <div class="section">
         <div class="section__content">
           <h1 id={"create-state"}>Diamond problem</h1>
-          <h2>
+          {/* <h2>
             <a href="https://stackblitz.com/edit/vitejs-vite-cxno2b">
               Live demo
             </a>
-          </h2>
-          <p>
-            <img src={diamondImg} />
-          </p>
+          </h2> */}
+          <Diamond />
         </div>
         <div class="section__code"></div>
       </div>
