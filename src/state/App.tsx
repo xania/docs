@@ -1,19 +1,22 @@
-import { JsxElement, jsxFactory, TemplateNodeType } from "@xania/view";
-import classes from "./layout.module.scss";
-import { Bash, Img, Javascript } from "./components";
-import { Outline } from "./outline";
-import { Search } from "./search";
+import { JsxElement, jsxFactory, render, TemplateNodeType } from "@xania/view";
+import classes from "../layout.module.scss";
+import { Bash, Img, Javascript } from "../components";
+import { Outline } from "../outline";
+import { Search } from "../search";
 import benchmarkImg from "./assets/benchmark-results.png";
 import { Diamond } from "./demos/diamond";
+import logoUrl from "./assets/logo.webp";
 
 const jsx = jsxFactory({ classes });
 
-export default function App() {
+render(<App />, document.getElementById("app"));
+
+export function App() {
   const main = <Main />;
   return (
     <div class="app">
       <div class="app__aside">
-        <div class="logo" />
+        <div class="logo" style={`background-image: url(${logoUrl})`} />
         <h1>Super Docu</h1>
         <Search />
         <Outline>
