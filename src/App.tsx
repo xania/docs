@@ -4,7 +4,6 @@ import { Bash, Img, Javascript } from "./components";
 import { Outline } from "./outline";
 import { Search } from "./search";
 import benchmarkImg from "./assets/benchmark-results.png";
-import diamondImg from "./assets/diamond.png";
 import { Diamond } from "./demos/diamond";
 
 const jsx = jsxFactory({ classes });
@@ -76,18 +75,23 @@ function Main() {
           </p>
         </div>
         <div class="section__code">
-          <Javascript lines={[2, 3, 5]}>
+          <Javascript lines={[5, 11]}>
             {`
-            // hello
+// 1. import
 import { State } from "@xania/state";
 
+// 2. create
 const count = new State(1);
+
+// 3. subscribe
 const subscription = count.subcribe({
   next(value: number) {
+    // 4. react on distinct values 
     console.log(value);
   },
 });
 
+// 5. unsubscribe
 subscription.unsubscribe();        
             `}
           </Javascript>
@@ -127,13 +131,13 @@ subscription.unsubscribe();
           <h2 id={"create-state"}>Create new state object</h2>
         </div>
         <div class="section__code">
-          <Javascript lines={[3]}>
+          <Javascript lines={[4]}>
             {`
-            import { State } from "@xania/state";
+import { State } from "@xania/state";
 
-            function App() {
-              const count = new State<number>();
-            }`}
+function App() {
+  const count = new State<number>();
+}`}
           </Javascript>
         </div>
       </div>
@@ -142,15 +146,15 @@ subscription.unsubscribe();
           <h2 id={"combine-latest"}>Combine latest</h2>
         </div>
         <div class="section__code">
-          <Javascript lines={[5]}>
+          <Javascript lines={[6]}>
             {`
-            import { State, combineLatest } from "@xania/state";
+import { State, combineLatest } from "@xania/state";
 
-            function App() {
-              const x = new State<number>(1);
-              const y = new State<number>(2);
-              const sum = combineLatest([x, y]).map(([x, y]) => x + y)
-            }
+function App() {
+  const x = new State<number>(1);
+  const y = new State<number>(2);
+  const sum = combineLatest([x, y]).map(([x, y]) => x + y)
+}
             `}
           </Javascript>
         </div>
@@ -223,12 +227,12 @@ subscription.unsubscribe();
           <p></p>
         </div>
         <div class="section__code">
-          <Javascript>
+          <Javascript lines={[4]}>
             {`
-            import { from } from "@xania/state";
-            import { timer } from "rxjs";
+import { from } from "@xania/state";
+import { timer } from "rxjs";
 
-            const state = from(timer(0, 1000));
+const state = from(timer(0, 1000));
             `}
           </Javascript>
         </div>
@@ -239,11 +243,11 @@ subscription.unsubscribe();
           <p></p>
         </div>
         <div class="section__code">
-          <Javascript>
+          <Javascript lines={[3]}>
             {`
-            import { from } from "@xania/state";
+import { from } from "@xania/state";
 
-            const state = from(Promise.resolve(1));
+const state = from(Promise.resolve(1));
             `}
           </Javascript>
         </div>
@@ -254,11 +258,11 @@ subscription.unsubscribe();
           <p></p>
         </div>
         <div class="section__code">
-          <Javascript>
+          <Javascript lines={[3]}>
             {`
-            import { from } from "@xania/state";
+import { from } from "@xania/state";
 
-            const state = from([1, 2, 3].values());
+const state = from([1, 2, 3].values());
             `}
           </Javascript>
         </div>
@@ -269,11 +273,11 @@ subscription.unsubscribe();
           <p></p>
         </div>
         <div class="section__code">
-          <Javascript>
+          <Javascript lines={[3]}>
             {`
-            import { from } from "@xania/state";
+import { from } from "@xania/state";
 
-            const state = from([1, 2, 3].values());
+const state = from([1, 2, 3].values());
             `}
           </Javascript>
         </div>

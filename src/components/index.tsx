@@ -1,10 +1,8 @@
 ﻿import { jsxFactory } from "@xania/view";
-import prettier from "prettier";
-import parserTypescript from "prettier/parser-typescript";
 
 import Prism from "prismjs";
-import "prismjs/components/prism-diff";
-import "prismjs/plugins/diff-highlight/prism-diff-highlight";
+// import "prismjs/components/prism-diff";
+// import "prismjs/plugins/diff-highlight/prism-diff-highlight";
 
 import classes from "./css.module.scss";
 const jsx = jsxFactory({ classes });
@@ -33,11 +31,7 @@ export function Bash(props: { children: JSX.Children }) {
 
 export function Javascript(props: MarkdownProps) {
   try {
-    const formatted = prettier.format(props.children[0], {
-      parser: "typescript",
-      newlineAfterImport: true,
-      plugins: [parserTypescript],
-    });
+    const formatted = props.children[0].trim();
 
     const html: string = parseJsx(
       Prism.highlight(formatted, Prism.languages.js, "javascript")
@@ -45,7 +39,6 @@ export function Javascript(props: MarkdownProps) {
 
     const lines = html
       .split("\n")
-      .filter((e) => e /** remove empty lines */)
       .map(
         (x, i) =>
           `<span class="${classes["line"]} ${
